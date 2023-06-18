@@ -12,7 +12,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   
   const configuration = new Configuration({
-    apiKey: process.env.NEXT_PUBLIC_OPENAPI_KEY,
+    apiKey: process.env.OPENAPI_KEY,
   });
 
   const openai = new OpenAIApi(configuration);
