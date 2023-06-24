@@ -9,22 +9,32 @@ export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleNewMessage = async (message: string) => {
-    setIsLoading(true);
 
-    const response = await createChatCompletion(message);
-    const aiMessageContent = response.data.choices[0].message?.content;
+const handleNewMessage = async (message: string) => {
+  setIsLoading(true);
 
-    setMessages((prevMessages: Message[]) => {
-      const newMessages = [...prevMessages, { sender: "user", text: message }];
-      if (aiMessageContent) {
-        newMessages.push({ sender: "ai", text: aiMessageContent });
-      }
-      return newMessages;
-    });
+  const response = await fetch('/api/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ message }),
+  });
 
-    setIsLoading(false);
-  };
+  const responseData = await response.json();
+  const aiMessageContent = responseData?.content;
+
+  setMessages((prevMessages: Message[]) => {
+    const newMessages = [...prevMessages, { sender: "user", text: message }];
+    if (aiMessageContent) {
+      newMessages.push({ sender: "ai", text: aiMessageContent });
+    }
+    return newMessages;
+  });
+
+  setIsLoading(false);
+};
+
 
   return (
     <div className=''>
