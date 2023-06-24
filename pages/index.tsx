@@ -42,7 +42,7 @@ const handleNewMessage = async (message: string) => {
         <Header />
       </div>
       <div className="bg-white h-screen flex justify-center items-center z-0">
-        <div className="w-1/2 bg-gradient-to-br from-blue-300 to-purple-600 rounded-lg p-6">
+        <div className="w-full md:w-1/2 bg-gradient-to-br from-blue-300 to-purple-600 rounded-lg p-6">
           <MessageList messages={messages} />
           <MessageForm isLoading={isLoading} onMessageSubmit={handleNewMessage} />
         </div>

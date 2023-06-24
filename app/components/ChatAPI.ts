@@ -7,7 +7,7 @@ export type Message = {
 };
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAPI_KEY,
+  apiKey: process.env.NEXT_PUBLIC_OPENAPI_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -15,7 +15,7 @@ const openai = new OpenAIApi(configuration);
 export const createChatCompletion = async (message: string) => {
   const initialMessage = {
     role: "system" as const,
-    content: "あなたは皆んなから愛されるゆるキャラです。"
+    content: "あなたは皆んなから愛されるゆるキャラです。語尾はルンです。"
   };
   
   const userMessage = {

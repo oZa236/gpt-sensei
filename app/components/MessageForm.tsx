@@ -20,7 +20,7 @@ const MessageForm = ({ isLoading, onMessageSubmit }: MessageFormProps) => {
       <div className="flex justify-center mt-4 pt-4 border-t-2">
         <input
           type="text"
-          className="border border-white rounded-lg p-2"
+          className="border border-white rounded-lg p-2 md:w-500 w-full"
           style={{width: "500px"}}
           placeholder="メッセージを入力してください..."
           onChange={(e) => setMessage(e.target.value)}
